@@ -4,17 +4,20 @@
 # Возвращается новая строка
 # Например (Ввод --> Вывод):
 # 'letter' --> l_1e_1t_1t_2e_2_r_1
-
-
 def repeats(our_str):
-    new_str = {}
-    for l in our_str:
-        if l in new_str:
-            print(f'{l}_{new_str[l]}', end=' ')
-        else:
-            print(l, end=' ')
-        new_str[l] = our_str.get(l, 0) + 1
-     return new_str
+    letters_dict = {}
+    new_str = ""
+
+    for letter in our_str:
+        if letter.isalpha():
+            if letter in letters_dict:
+                letters_dict[letter] += 1
+                new_str += letter + "_" + str(letters_dict[letter])
+            else:
+                letters_dict[letter] = 1
+                new_str += letter + "_1"
+
+    return new_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 

@@ -5,15 +5,15 @@
 # Например (Ввод --> Вывод) :
 # 'letter' --> {'l': 1, 'e': 2, 't': 2, 'r': 1}
 
-
 def letter_stat(our_str):
-    count = 0
     letters_dict = {}
-  for i in our_str:
-    if count in j:
-      count += 1
-      letters_dict.append(i)
-  return letters_dict
+    for letter in our_str:
+        if letter.isalpha():
+            if letter in letters_dict:
+                letters_dict[letter] += 1
+            else:
+                letters_dict[letter] = 1
+    return letters_dict
 
 
 

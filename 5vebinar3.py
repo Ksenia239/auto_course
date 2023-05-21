@@ -19,11 +19,22 @@
 
 def everything_for_your_cat(cats_data):
     result = {}
+
     for cat in cats_data:
-        temp = cat[0] + ', ' + str(cat[1])
-        result.setdefault(cat[2:], []).append(temp)
-    for k, v in result.items():
-        return (' '.join(k) + ':', '; '.join(v))
+        name, age, owner_name, owner_last_name = cat
+        owner_data = result.setdefault((owner_name, owner_last_name), [])
+        owner_data.append((name, age))
+
+    result_str = ""
+    for owner, cats in result.items():
+        result_str += owner[0] + " " + owner[1] + ": "
+        cats_str = ""
+        for cat in cats:
+            cats_str += cat[0] + ", " + str(cat[1]) + "; "
+        result_str += cats_str[:-2] + "\n"
+
+    return result_str
+
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
